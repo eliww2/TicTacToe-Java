@@ -34,18 +34,34 @@ import static org.junit.Assert.assertEquals;
 public class TicTacToeBoardTest {
 
   // Start of IllegalArgumentsTesting
-  /** Tests null argument throws exception */
+  /** Tests null argument throws exception. */
   @Test (expected = IllegalArgumentException.class)
   public void testNullArgument() {
     TicTacToeBoard board = new TicTacToeBoard(null);
   }
 
-  /** Tests incorrect length string throw exception*/
+  /** Tests incorrect length string throw exception. */
   @Test (expected = IllegalArgumentException.class)
   public void testStringLength() {
     TicTacToeBoard board = new TicTacToeBoard("xoXoXoxo");
   }
   // End of IllegalArgumentTesting
+
+  // Start of UnreachableStateTesting
+  /** Tests that Player 1 has no more than one move more than player 2. */
+  @Test
+  public void testPlayerOneMoves() {
+    TicTacToeBoard board = new TicTacToeBoard("XxoXOX...");
+    assertEquals(Evaluation.UnreachableState, board.evaluate());
+  }
+
+  /** Tests that Player 2 does not have more moves than player 1. */
+  @Test
+  public void testPlayerTwoMoves() {
+    TicTacToeBoard board = new TicTacToeBoard("oOxOxO...");
+    assertEquals(Evaluation.UnreachableState, board.evaluate());
+  }
+  // End of UnreachableStateTesting
 
   /*
   @Test
