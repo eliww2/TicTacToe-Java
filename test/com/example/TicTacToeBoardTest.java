@@ -6,10 +6,12 @@ import static org.junit.Assert.assertEquals;
 /* What needs to be checked?
 
 (IllegalArgumentExceptions)
-1. TicTacToeBoard is passed a NonNull String.
+1. TicTacToeBoard is passed a NonNull String. (Java Complier Checks for String Argument)
 2. String must be of correct length.
-3. Assuming x goes first, check so that X does not appear more than once more than O.
-4. Check to make sure O never appears more than X.
+
+(Unreachable State)
+1. Assuming x goes first, check so that X does not appear more than once more than O.
+2. Check to make sure O never appears more than X.
 
 (Horizontal Wins)
 1. Check X wins on the horizontal, use both x and X to ensure game detects both.
@@ -29,14 +31,26 @@ import static org.junit.Assert.assertEquals;
 2. Check full board with no winner returns NoWinner.
  */
 
-
 public class TicTacToeBoardTest {
 
-  public static class IllegalArgumentsTest {
-    @Test
-    public void testValidBoardNoWinner() {
-      TicTacToeBoard board = new TicTacToeBoard("O...X.X..");
-      assertEquals(Evaluation.NoWinner, board.evaluate());
-    }
+  // Start of IllegalArgumentsTesting
+  /** Tests null argument throws exception */
+  @Test (expected = IllegalArgumentException.class)
+  public void testNullArgument() {
+    TicTacToeBoard board = new TicTacToeBoard(null);
   }
+
+  /** Tests incorrect length string throw exception*/
+  @Test (expected = IllegalArgumentException.class)
+  public void testStringLength() {
+    TicTacToeBoard board = new TicTacToeBoard("xoXoXoxo");
+  }
+  // End of IllegalArgumentTesting
+
+  /*
+  @Test
+  public void testValidBoardNoWinner() {
+    TicTacToeBoard board = new TicTacToeBoard("O...X.X..");
+    assertEquals(Evaluation.NoWinner, board.evaluate());
+  } */
 }
