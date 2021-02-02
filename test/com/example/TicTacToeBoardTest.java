@@ -86,6 +86,24 @@ public class TicTacToeBoardTest {
   }
   // End of HorizontalTesting
 
+  // Start of VerticalTesting
+  /** Tests X Vertical works */
+  @Test
+  public void testXWinnerVertical() {
+    TicTacToeBoard board = new TicTacToeBoard("xo.x.OX..");
+    assertEquals(Evaluation.Xwins, board.evaluate());
+  }
+
+  /** Tests O Vertical works */
+  @Test
+  public void testOWinnerVertical() {
+    TicTacToeBoard board = new TicTacToeBoard("xXO..OX.o");
+    assertEquals(Evaluation.Xwins, board.evaluate());
+  }
+  // End of VerticalTesting
+
+
+
 
   /*
   @Test
