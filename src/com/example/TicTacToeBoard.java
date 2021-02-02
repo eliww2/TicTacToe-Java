@@ -8,24 +8,22 @@ public class TicTacToeBoard {
   final private int BOARD_LENGTH = 3;
   final private int BOARD_HEIGHT = 3;
   final private int BOARD_SIZE = BOARD_HEIGHT * BOARD_LENGTH;
-  final private int IN_A_ROW = 3;
 
-  private char[] boardArray;
   private String boardString;
 
   /**
    * This method should load a string into your TicTacToeBoard class.
-   * @param setBoard The string representing the board
+   * @param board The string representing the board
    */
-  public TicTacToeBoard(String setBoard) {
-    if (setBoard == null) {
+  public TicTacToeBoard(String board) {
+    if (board == null) {
       throw new IllegalArgumentException();
     }
-    if (setBoard.length() != BOARD_SIZE) {
+    if (board.length() != BOARD_SIZE) {
       throw new IllegalArgumentException();
     }
-    boardArray = setBoard.toLowerCase().toCharArray();
-    boardString = setBoard.toLowerCase();
+
+    boardString = board.toLowerCase();
   }
 
   /**
@@ -38,10 +36,10 @@ public class TicTacToeBoard {
     int xCount = 0;
     int oCount = 0;
     for (int i = 0; i < BOARD_SIZE; i++) {
-      if (boardArray[i] == 'x') {
+      if (boardString.charAt(i) == 'x') {
         xCount++;
       }
-      if (boardArray[i] == 'o') {
+      if (boardString.charAt(i) == 'o') {
         oCount++;
       }
     }
@@ -90,7 +88,6 @@ public class TicTacToeBoard {
     String diagonalRightToLeft = "";
     for (int i = 1; i < BOARD_LENGTH + 1; i++) {
       diagonalRightToLeft += boardString.charAt(i * (BOARD_LENGTH - 1));
-      System.out.println(diagonalRightToLeft);
     } if (diagonalRightToLeft.contains("xxx")) {
       xWins++;
     } else if (diagonalRightToLeft.contains("ooo")) {
