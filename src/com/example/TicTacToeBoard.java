@@ -50,7 +50,6 @@ public class TicTacToeBoard {
     }
 
     // Horizontal testing
-    String[] horizontals = new String[BOARD_HEIGHT];
     for (int i = 0; i < BOARD_HEIGHT; i++) {
       if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("xxx")) {
         return Evaluation.Xwins;
@@ -59,6 +58,22 @@ public class TicTacToeBoard {
         return Evaluation.Owins;
       }
     }
+
+    // Vertical testing
+    for (int i = 0; i < BOARD_LENGTH; i++) {
+      String vertical = null;
+      for (int j = 0; j < BOARD_HEIGHT; j++) {
+        vertical += boardString.charAt(i + BOARD_LENGTH);
+      }
+      if (vertical.contains("xxx")) {
+        return Evaluation.Xwins;
+      }
+      if (vertical.contains("ooo")) {
+        return Evaluation.Owins;
+      }
+    }
+
+    // Diagonal testing
 
 
 
