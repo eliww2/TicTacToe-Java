@@ -16,7 +16,12 @@ public class TicTacToeBoard {
    * @param board The string representing the board
    */
   public TicTacToeBoard(String board) {
-
+    if (board == null) {
+      throw new IllegalArgumentException();
+    }
+    if (board.length() != BOARD_SIZE) {
+      throw new IllegalArgumentException();
+    }
   }
 
   /**
