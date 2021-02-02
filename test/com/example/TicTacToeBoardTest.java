@@ -72,7 +72,7 @@ public class TicTacToeBoardTest {
   @Test
   public void testTwoWinners() {
     TicTacToeBoard board = new TicTacToeBoard("xxxooo...");
-    assertEquals(Evaluation.NoWinner, board.evaluate());
+    assertEquals(Evaluation.UnreachableState, board.evaluate());
   }
 
   // End of UnreachableStateTesting
@@ -118,7 +118,7 @@ public class TicTacToeBoardTest {
   /** Tests X Diagonal works */
   @Test
   public void testLeftToRightDiagonal() {
-    TicTacToeBoard board = new TicTacToeBoard("oxx.o.x.o");
+    TicTacToeBoard board = new TicTacToeBoard("x.O.X.o.x");
     assertEquals(Evaluation.Xwins, board.evaluate());
   }
 
@@ -136,7 +136,7 @@ public class TicTacToeBoardTest {
   /** Tests different characters don't result in a win */
   @Test
   public void testFaultyWinner() {
-    TicTacToeBoard board = new TicTacToeBoard("xoX.Oppp");
+    TicTacToeBoard board = new TicTacToeBoard("xoX.Oppp0");
     assertEquals(Evaluation.NoWinner, board.evaluate());
   }
 

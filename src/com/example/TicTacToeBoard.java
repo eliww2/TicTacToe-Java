@@ -49,13 +49,16 @@ public class TicTacToeBoard {
       return Evaluation.UnreachableState;
     }
 
+    // determines winner, if one is above 0, they win, unless both then unreachable state.
+    int xWins = 0;
+    int oWins = 0;
 
     // Horizontal testing
     for (int i = 0; i < BOARD_HEIGHT; i++) {
       if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("xxx")) {
-        return Evaluation.Xwins;
+        xWins++;
       } else if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("ooo")) {
-        return Evaluation.Owins;
+        oWins++;
       }
     }
 
@@ -66,16 +69,42 @@ public class TicTacToeBoard {
         vertical += boardString.charAt(j);
       }
       if (vertical.contains("xxx")) {
-        return Evaluation.Xwins;
+        xWins++;
       } else if (vertical.contains("ooo")) {
-        return Evaluation.Owins;
+        oWins++;
       }
     }
 
+    // Left to Right Diagonal testing (this is mostly applicable for boards with m = n = k)
+    String diagonalLeftToRight = "";
+    for (int i = 0; i < BOARD_LENGTH; i++) {
+      diagonalLeftToRight += boardString.charAt(i * (BOARD_LENGTH + 1));
+    }
+    if (diagonalLeftToRight.contains("xxx")) {
+      xWins++;
+    } else if (diagonalLeftToRight.contains("ooo")) {
+      oWins++;
+    }
 
+    // Right to Left Diagonal testing
+    String diagonalRightToLeft = "";
+    for (int i = 1; i < BOARD_LENGTH + 1; i++) {
+      diagonalRightToLeft += boardString.charAt(i * (BOARD_LENGTH - 1));
+      System.out.println(diagonalRightToLeft);
+    } if (diagonalRightToLeft.contains("xxx")) {
+      xWins++;
+    } else if (diagonalRightToLeft.contains("ooo")) {
+      oWins++;
+    }
 
-
-
-    return null;
+    // winner decided
+    if (xWins > 0 && oWins > 0) {
+      return Evaluation.UnreachableState;
+    } else if (xWins > 0) {
+      return Evaluation.Xwins;
+    } else if (oWins > 0) {
+      return Evaluation.Owins;
+    }
+    return Evaluation.NoWinner;
   }
 }
