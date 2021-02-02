@@ -29,6 +29,9 @@ import static org.junit.Assert.assertEquals;
 (No Winner)
 1. Check that a board still in progress has no winner.
 2. Check full board with no winner returns NoWinner.
+
+(Edge cases)
+1. Two winners
  */
 
 public class TicTacToeBoardTest {
@@ -98,10 +101,25 @@ public class TicTacToeBoardTest {
   @Test
   public void testOWinnerVertical() {
     TicTacToeBoard board = new TicTacToeBoard("xXO..OX.o");
-    assertEquals(Evaluation.Xwins, board.evaluate());
+    assertEquals(Evaluation.Owins, board.evaluate());
   }
   // End of VerticalTesting
 
+  // Start of DiagonalTesting
+  /** Tests X Diagonal works */
+  @Test
+  public void testXWinnerDiagonal() {
+    TicTacToeBoard board = new TicTacToeBoard("xooox.x.x");
+    assertEquals(Evaluation.Xwins, board.evaluate());
+  }
+
+  /** Tests O Diagonal works */
+  @Test
+  public void testOWinnerDiagonal() {
+    TicTacToeBoard board = new TicTacToeBoard("x.o.Oxo.X");
+    assertEquals(Evaluation.Owins, board.evaluate());
+  }
+  // End of Diagonal Testing
 
 
 
