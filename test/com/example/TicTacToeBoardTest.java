@@ -51,17 +51,41 @@ public class TicTacToeBoardTest {
   /** Tests that Player 1 has no more than one move more than player 2. */
   @Test
   public void testPlayerOneMoves() {
-    TicTacToeBoard board = new TicTacToeBoard("XxoXOX...");
+    TicTacToeBoard board = new TicTacToeBoard("XxoXOX.1.");
     assertEquals(Evaluation.UnreachableState, board.evaluate());
   }
 
   /** Tests that Player 2 does not have more moves than player 1. */
   @Test
   public void testPlayerTwoMoves() {
-    TicTacToeBoard board = new TicTacToeBoard("oOxOxO...");
+    TicTacToeBoard board = new TicTacToeBoard("oOxOxO..z");
     assertEquals(Evaluation.UnreachableState, board.evaluate());
   }
   // End of UnreachableStateTesting
+
+  // Start of HorizontalTesting
+  /** Tests X horizontal works. */
+  @Test
+  public void testXWinnerHorizontal() {
+    TicTacToeBoard board = new TicTacToeBoard("xXxOoX..O");
+    assertEquals(Evaluation.Xwins, board.evaluate());
+  }
+
+  /** Tests O horizontal works */
+  @Test
+  public void testOWinnerHorizontal() {
+    TicTacToeBoard board = new TicTacToeBoard("xX.OoO..X");
+    assertEquals(Evaluation.Owins, board.evaluate());
+  }
+
+  /** Tests different characters don't result in a win */
+  @Test
+  public void testFaultyWinner() {
+    TicTacToeBoard board = new TicTacToeBoard("xoX.Oppp");
+    assertEquals(Evaluation.NoWinner, board.evaluate());
+  }
+  // End of HorizontalTesting
+
 
   /*
   @Test
