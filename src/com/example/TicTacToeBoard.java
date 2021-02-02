@@ -49,31 +49,30 @@ public class TicTacToeBoard {
       return Evaluation.UnreachableState;
     }
 
+
     // Horizontal testing
     for (int i = 0; i < BOARD_HEIGHT; i++) {
       if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("xxx")) {
         return Evaluation.Xwins;
-      }
-      if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("ooo")) {
+      } else if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("ooo")) {
         return Evaluation.Owins;
       }
     }
 
     // Vertical testing
     for (int i = 0; i < BOARD_LENGTH; i++) {
-      String vertical = null;
-      for (int j = 0; j < BOARD_HEIGHT; j++) {
-        vertical += boardString.charAt(i + BOARD_LENGTH);
+      String vertical = "";
+      for (int j = i; j < BOARD_SIZE; j += BOARD_LENGTH) {
+        vertical += boardString.charAt(j);
       }
       if (vertical.contains("xxx")) {
         return Evaluation.Xwins;
-      }
-      if (vertical.contains("ooo")) {
+      } else if (vertical.contains("ooo")) {
         return Evaluation.Owins;
       }
     }
 
-    // Diagonal testing
+
 
 
 

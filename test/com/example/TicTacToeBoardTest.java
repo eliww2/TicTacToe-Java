@@ -117,14 +117,14 @@ public class TicTacToeBoardTest {
 
   /** Tests X Diagonal works */
   @Test
-  public void testXWinnerDiagonal() {
-    TicTacToeBoard board = new TicTacToeBoard("xooox.x.x");
+  public void testLeftToRightDiagonal() {
+    TicTacToeBoard board = new TicTacToeBoard("oxx.o.x.o");
     assertEquals(Evaluation.Xwins, board.evaluate());
   }
 
   /** Tests O Diagonal works */
   @Test
-  public void testOWinnerDiagonal() {
+  public void testRightToLeftDiagonal() {
     TicTacToeBoard board = new TicTacToeBoard("x.o.Oxo.X");
     assertEquals(Evaluation.Owins, board.evaluate());
   }
