@@ -37,6 +37,7 @@ import static org.junit.Assert.assertEquals;
 public class TicTacToeBoardTest {
 
   // Start of IllegalArgumentsTesting
+
   /** Tests null argument throws exception. */
   @Test (expected = IllegalArgumentException.class)
   public void testNullArgument() {
@@ -48,9 +49,11 @@ public class TicTacToeBoardTest {
   public void testStringLength() {
     TicTacToeBoard board = new TicTacToeBoard("xoXoXoxo");
   }
+
   // End of IllegalArgumentTesting
 
   // Start of UnreachableStateTesting
+
   /** Tests that Player 1 has no more than one move more than player 2. */
   @Test
   public void testPlayerOneMoves() {
@@ -64,9 +67,18 @@ public class TicTacToeBoardTest {
     TicTacToeBoard board = new TicTacToeBoard("oOxOxO..z");
     assertEquals(Evaluation.UnreachableState, board.evaluate());
   }
+
+  /** Tests 2 winners */
+  @Test
+  public void testTwoWinners() {
+    TicTacToeBoard board = new TicTacToeBoard("xxxooo...");
+    assertEquals(Evaluation.NoWinner, board.evaluate());
+  }
+
   // End of UnreachableStateTesting
 
   // Start of HorizontalTesting
+
   /** Tests X horizontal works. */
   @Test
   public void testXWinnerHorizontal() {
@@ -81,15 +93,10 @@ public class TicTacToeBoardTest {
     assertEquals(Evaluation.Owins, board.evaluate());
   }
 
-  /** Tests different characters don't result in a win */
-  @Test
-  public void testFaultyWinner() {
-    TicTacToeBoard board = new TicTacToeBoard("xoX.Oppp");
-    assertEquals(Evaluation.NoWinner, board.evaluate());
-  }
   // End of HorizontalTesting
 
   // Start of VerticalTesting
+
   /** Tests X Vertical works */
   @Test
   public void testXWinnerVertical() {
@@ -103,9 +110,11 @@ public class TicTacToeBoardTest {
     TicTacToeBoard board = new TicTacToeBoard("xXO..OX.o");
     assertEquals(Evaluation.Owins, board.evaluate());
   }
+
   // End of VerticalTesting
 
   // Start of DiagonalTesting
+
   /** Tests X Diagonal works */
   @Test
   public void testXWinnerDiagonal() {
@@ -119,14 +128,25 @@ public class TicTacToeBoardTest {
     TicTacToeBoard board = new TicTacToeBoard("x.o.Oxo.X");
     assertEquals(Evaluation.Owins, board.evaluate());
   }
-  // End of Diagonal Testing
 
+  // End of DiagonalTesting
 
+  // Start NoWinnerTesting
 
-  /*
+  /** Tests different characters don't result in a win */
   @Test
-  public void testValidBoardNoWinner() {
+  public void testFaultyWinner() {
+    TicTacToeBoard board = new TicTacToeBoard("xoX.Oppp");
+    assertEquals(Evaluation.NoWinner, board.evaluate());
+  }
+
+  /** Tests uncompleted game.*/
+  @Test
+  public void testIncompleteGame() {
     TicTacToeBoard board = new TicTacToeBoard("O...X.X..");
     assertEquals(Evaluation.NoWinner, board.evaluate());
-  } */
+  }
+
+  // End of NoWinnerTesting
+
 }
