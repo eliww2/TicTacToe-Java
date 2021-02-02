@@ -5,23 +5,25 @@ package com.example;
  */
 public class TicTacToeBoard {
 
-  // Parameters of board that are flexible to change
-  private int BOARD_LENGTH = 3;
-  private int BOARD_HEIGHT = 3;
-  private int BOARD_SIZE = BOARD_HEIGHT * BOARD_LENGTH;
-  private int IN_A_ROW = 3;
+  final private int BOARD_LENGTH = 3;
+  final private int BOARD_HEIGHT = 3;
+  final private int BOARD_SIZE = BOARD_HEIGHT * BOARD_LENGTH;
+  final private int IN_A_ROW = 3;
+
+  private char[] board;
 
   /**
    * This method should load a string into your TicTacToeBoard class.
-   * @param board The string representing the board
+   * @param setBoard The string representing the board
    */
-  public TicTacToeBoard(String board) {
-    if (board == null) {
+  public TicTacToeBoard(String setBoard) {
+    if (setBoard == null) {
       throw new IllegalArgumentException();
     }
-    if (board.length() != BOARD_SIZE) {
+    if (setBoard.length() != BOARD_SIZE) {
       throw new IllegalArgumentException();
     }
+    board = setBoard.toLowerCase().toCharArray();
   }
 
   /**
@@ -29,6 +31,9 @@ public class TicTacToeBoard {
    * @return an enum value corresponding to the board evaluation
    */
   public Evaluation evaluate() {
-    return Evaluation.Xwins;
+
+    System.out.println(board[0]);
+
+    return null;
   }
 }
