@@ -32,6 +32,22 @@ public class TicTacToeBoard {
    */
   public Evaluation evaluate() {
 
+    // Unreachable state testing
+    int xCount = 0;
+    int oCount = 0;
+    for (int i = 0; i < BOARD_SIZE; i++) {
+      if (board[i] == 'x') {
+        xCount++;
+      }
+      if (board[i] == 'o') {
+        oCount++;
+      }
+    }
+    if (xCount > oCount + 1 || oCount > xCount) {
+      return Evaluation.UnreachableState;
+    }
+
+
     System.out.println(board[0]);
 
     return null;
