@@ -10,7 +10,8 @@ public class TicTacToeBoard {
   final private int BOARD_SIZE = BOARD_HEIGHT * BOARD_LENGTH;
   final private int IN_A_ROW = 3;
 
-  private char[] board;
+  private char[] boardArray;
+  private String boardString;
 
   /**
    * This method should load a string into your TicTacToeBoard class.
@@ -23,7 +24,8 @@ public class TicTacToeBoard {
     if (setBoard.length() != BOARD_SIZE) {
       throw new IllegalArgumentException();
     }
-    board = setBoard.toLowerCase().toCharArray();
+    boardArray = setBoard.toLowerCase().toCharArray();
+    boardString = setBoard.toLowerCase();
   }
 
   /**
@@ -36,10 +38,10 @@ public class TicTacToeBoard {
     int xCount = 0;
     int oCount = 0;
     for (int i = 0; i < BOARD_SIZE; i++) {
-      if (board[i] == 'x') {
+      if (boardArray[i] == 'x') {
         xCount++;
       }
-      if (board[i] == 'o') {
+      if (boardArray[i] == 'o') {
         oCount++;
       }
     }
@@ -47,8 +49,18 @@ public class TicTacToeBoard {
       return Evaluation.UnreachableState;
     }
 
+    // Horizontal testing
+    String[] horizontals = new String[BOARD_HEIGHT];
+    for (int i = 0; i < BOARD_HEIGHT; i++) {
+      if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("xxx")) {
+        return Evaluation.Xwins;
+      }
+      if (boardString.substring(BOARD_LENGTH * i, BOARD_LENGTH * (i + 1)).contains("ooo")) {
+        return Evaluation.Owins;
+      }
+    }
 
-    System.out.println(board[0]);
+
 
     return null;
   }
