@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 /* What needs to be checked?
 
 (IllegalArgumentExceptions)
-1. TicTacToeBoard is passed a NonNull String. (Java Complier Checks for String Argument)
+1. TicTacToeBoard is passed a NonNull String. (Java Compiler Checks for String Argument)
 2. String must be of correct length.
 
 (Unreachable State)
