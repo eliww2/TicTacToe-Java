@@ -146,6 +146,14 @@ public class TicTacToeBoardTest {
     assertEquals(Evaluation.NoWinner, board.evaluate());
   }
 
+  /** Tests valid board with no winner.*/
+  @Test
+  public void testValidBoardNoWinner() {
+    TicTacToeBoard board = new TicTacToeBoard("xOxxOooXx");
+    assertEquals(Evaluation.NoWinner, board.evaluate());
+  }
+
+
   // End of NoWinnerTesting
 
 }
