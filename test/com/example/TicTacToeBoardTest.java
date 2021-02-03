@@ -12,6 +12,7 @@ import static org.junit.Assert.assertEquals;
 (Unreachable State)
 1. Assuming x goes first, check so that X does not appear more than once more than O.
 2. Check to make sure O never appears more than X.
+3. Two different winners (edge case)
 
 (Horizontal Wins)
 1. Check X wins on the horizontal, use both x and X to ensure game detects both.
@@ -30,8 +31,6 @@ import static org.junit.Assert.assertEquals;
 1. Check that a board still in progress has no winner.
 2. Check full board with no winner returns NoWinner.
 
-(Edge cases)
-1. Two winners
  */
 
 public class TicTacToeBoardTest {
